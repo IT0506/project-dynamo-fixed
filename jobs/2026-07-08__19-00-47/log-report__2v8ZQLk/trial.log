@@ -1,0 +1,17 @@
+Skipping image OS validation for hb__638f1571d04fd32605155c84f536895b: docker inspect returned 1
+Collecting main service artifacts
+Failed to download artifact '/app/out.json' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\site-packages\harbor\trial\artifact_handler.py", line 330, in _download_artifact
+    await source_env.service_download_file(
+  File "C:\Program Files\Python312\Lib\site-packages\harbor\environments\docker\docker.py", line 1019, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "C:\Program Files\Python312\Lib\site-packages\harbor\environments\docker\docker.py", line 1004, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "C:\Program Files\Python312\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 186, in download_file
+    await self._env._run_docker_compose_command(
+  File "C:\Program Files\Python312\Lib\site-packages\harbor\environments\docker\docker.py", line 625, in _run_docker_compose_command
+    raise RuntimeError(
+RuntimeError: Docker compose command failed for environment log-report. Command: docker compose --project-name log-report__2v8zqlk__env --project-directory C:\abc\log-report\environment -f C:\Users\tabas\AppData\Local\Temp\tmp2h2ehk5u\log-report__2v8ZQLk__env-docker-compose-resources.json -f C:\Program Files\Python312\Lib\site-packages\harbor\environments\docker\docker-compose-build.yaml -f C:\Users\tabas\AppData\Local\Temp\tmpt8uxyk5b\docker-compose-mounts.json cp main:/app/out.json jobs\2026-07-08__19-00-47\log-report__2v8ZQLk\artifacts\app\out.json. Return code: 1. Stdout:  log-report__2v8zqlk__env-main-1 Copying log-report__2v8zqlk__env-main-1:/app/out.json to jobs\2026-07-08__19-00-47\log-report__2v8ZQLk\artifacts\app\out.json
+Error response from daemon: Could not find the file /app/out.json in container 84733355fc198543c0ebc4d921f03c19ad43985b72b7a8ed4ec525fbc5cc4d62
+. Stderr: None. 

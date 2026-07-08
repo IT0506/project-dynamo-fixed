@@ -1,0 +1,91 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.6, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 5 items
+
+../tests/test_outputs.py FFFFF                                           [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_report_exists ______________________________
+
+    def test_report_exists():
+        """Success Criterion 1: The report is written to /app/report.json."""
+>       assert Path("/app/report.json").exists(), "report.json was not created"
+E       AssertionError: report.json was not created
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/app/report.json').exists
+E        +      where PosixPath('/app/report.json') = Path('/app/report.json')
+
+/tests/test_outputs.py:12: AssertionError
+__________________________ test_report_is_valid_json ___________________________
+
+    def test_report_is_valid_json():
+        """Success Criterion 2: The report is valid JSON."""
+>       load_report()
+
+/tests/test_outputs.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_report():
+>       with open("/app/report.json", "r", encoding="utf-8") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/tests/test_outputs.py:6: FileNotFoundError
+_____________________________ test_total_requests ______________________________
+
+    def test_total_requests():
+        """Success Criterion 3: total_requests equals the number of log entries."""
+>       report = load_report()
+                 ^^^^^^^^^^^^^
+
+/tests/test_outputs.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_report():
+>       with open("/app/report.json", "r", encoding="utf-8") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/tests/test_outputs.py:6: FileNotFoundError
+_______________________________ test_unique_ips ________________________________
+
+    def test_unique_ips():
+        """Success Criterion 4: unique_ips equals the number of distinct client IP addresses."""
+>       report = load_report()
+                 ^^^^^^^^^^^^^
+
+/tests/test_outputs.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_report():
+>       with open("/app/report.json", "r", encoding="utf-8") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/tests/test_outputs.py:6: FileNotFoundError
+________________________________ test_top_path _________________________________
+
+    def test_top_path():
+        """Success Criterion 5: top_path equals the most frequently requested path."""
+>       report = load_report()
+                 ^^^^^^^^^^^^^
+
+/tests/test_outputs.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load_report():
+>       with open("/app/report.json", "r", encoding="utf-8") as f:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/tests/test_outputs.py:6: FileNotFoundError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_report_exists - AssertionError: report....
+FAILED ../tests/test_outputs.py::test_report_is_valid_json - FileNotFoundErro...
+FAILED ../tests/test_outputs.py::test_total_requests - FileNotFoundError: [Er...
+FAILED ../tests/test_outputs.py::test_unique_ips - FileNotFoundError: [Errno ...
+FAILED ../tests/test_outputs.py::test_top_path - FileNotFoundError: [Errno 2]...
+============================== 5 failed in 0.18s ===============================
