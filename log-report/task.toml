@@ -1,25 +1,25 @@
-artifacts =[ "/app/out.json"]
+artifacts = ["/app/report.json"]
 
 [task]
 name = "dynamo/log-report"
-description = "Parse an Apache-style access log into a small JSON summary report."
+description = "Generate a JSON report summarizing an Apache access log."
 
 [metadata]
-category = "data_processing_and_etl"
-subcategory = "text_processing"
-task_objective = ["transform", "generate"]
-artifact_type = ["text_or_log_file", "generated_output_artifact"]
+category = "<lowercase_snake_case_category>"
+subcategory = "<lowercase_snake_case_subcategory>"
+task_objective = ["<lowercase_snake_case_task_objective>"]
+artifact_type = ["<lowercase_snake_case_artifact_type>"]
 expert_time_estimate_hours = 0.3
 model_tested = "GPT-5.4"
 agent_tested = "Terminus-2"
-difficulty_explanation = "Parse a small access log and emit summary stats."
-solution_explanation = "Read the log, count requests/unique IPs, find the top path."
-verification_explanation = "Check the report file."
-
-[verifier]
-timeout_sec = 120.0
+difficulty_explanation = "The task requires parsing a standard Apache access log, counting total requests and unique client IP addresses, determining the most frequently requested path, and producing a JSON report in the required format."
+solution_explanation = "The solution reads each log entry, extracts the client IP address and request path, computes the required statistics, and writes them to /app/report.json."
+verification_explanation = "The verifier checks that /app/report.json exists, is valid JSON, and contains the correct values for total_requests, unique_ips, and top_path."
 
 [agent]
+timeout_sec = 120.0
+
+[verifier]
 timeout_sec = 120.0
 
 [environment]
@@ -28,5 +28,5 @@ cpus = 1
 memory_mb = 2048
 storage_mb = 10240
 gpus = 0
-allow_internet = true
+allow_internet = false
 mcp_servers = []
